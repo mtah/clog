@@ -5,6 +5,7 @@
 
 typedef struct clog_out {
   FILE *stream;
+  const int managed;
   struct clog_out *next;
 } clog_out;
 
