@@ -13,9 +13,9 @@ typedef struct {
 } clog;
 
 clog *clog_open(void);
-void *clog_close(clog *logger);
-void *clog_add_stream(clog *logger, FILE *stream);
-void *clog_add_path(clog *logger, const char *path);
+void clog_close(clog *logger);
+void clog_add_stream(clog *logger, FILE *stream);
+void clog_add_path(clog *logger, const char *path);
 void clog_log(const clog *logger, const char *level, const char *format, ...);
 
 #define CLOG_LEVEL_OFF   11

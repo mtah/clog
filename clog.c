@@ -9,7 +9,7 @@ clog *clog_open(void) {
   return logger;
 }
 
-void *clog_close(clog *logger) {
+void clog_close(clog *logger) {
   clog_out *tmp, *out = logger->out;
 
   while(out) {
@@ -22,14 +22,14 @@ void *clog_close(clog *logger) {
   free(logger);
 }
 
-void *clog_add_stream(clog *logger, FILE *stream) {
+void clog_add_stream(clog *logger, FILE *stream) {
   clog_out *out = malloc(sizeof(clog_out));
   out->stream = stream;
   out->next = logger->out;
   logger->out = out;
 }
 
-void *clog_add_path(clog *logger, const char *path) {
+void clog_add_path(clog *logger, const char *path) {
   FILE *stream = fopen(path, "a");
 
   clog_add_stream(logger, stream);
