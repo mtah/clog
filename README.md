@@ -21,6 +21,17 @@ clog is a simplistic logging library written in C.
       return 0;
     }
 
+The log level threshold can be configured at compile-time by setting the
+`CLOG_THRESHOLD` preprocessor directive to one of `CLOG_LEVEL_DEBUG`,
+`CLOG_LEVEL_INFO`, `CLOG_LEVEL_WARN`, `CLOG_LEVEL_ERROR`,
+`CLOG_LEVEL_FATAL` or `CLOG_LEVEL_OFF` (turning off logging
+completely) like so:
+
+    gcc -DCLOG_THRESHOLD=CLOG_LEVEL_ERROR example.c -o example
+
+This will cause only calls to `clog_error` and `clog_fatal` to produce
+output, which is also the default if `CLOG_THRESHOLD` is omitted.
+
 ## License
 
 Copyright (c) 2010 Martin Häger
